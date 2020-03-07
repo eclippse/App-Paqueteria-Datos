@@ -127,9 +127,13 @@ public class Gestion extends AppCompatActivity {
         stPeso = peso.getText().toString();
         nuContinente = continente.getSelectedItemPosition();
         stContinente = String.valueOf(nuContinente);
-        nuPais = pais.getSelectedItemPosition();
+
+        /*nuPais = pais.getSelectedItemPosition();
         stPais = String.valueOf(nuPais);
-        stCostoEnvio = costoEnvio.getText().toString();
+        stCostoEnvio = costoEnvio.getText().toString();*/
+
+        stPais = pais.getSelectedItem().toString();
+
 
         registro = new ContentValues();
         registro.put("nombre", stNombre);
@@ -141,7 +145,7 @@ public class Gestion extends AppCompatActivity {
         bd.insert("envios", null, registro);
         bd.close();
 
-        Toast.makeText(this, "Se han guardado los datos del paquete " + stNombre+ " con Exito" + stContinente +" "+ stPais, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Se han guardado los datos del paquete " + stNombre+ " con Exito", Toast.LENGTH_SHORT).show();
 
         nombre.setText("");
         peso.setText("");
@@ -155,7 +159,7 @@ public class Gestion extends AppCompatActivity {
         Cursor fila = bd.rawQuery("select peso, continente, pais, costoEnvio from envios where nombre=" + stNombre, null);
         if(fila.moveToFirst()){
             peso.setText(fila.getString(0));
-            //tvContinente.setText(fila.getString(1));
+            tvContinente.setText(fila.getString(1));
             stContinente = fila.getString(1);
             nuContinente = Integer.parseInt(stContinente);
             continente.setSelection(nuContinente);
