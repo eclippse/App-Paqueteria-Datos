@@ -84,7 +84,7 @@ public class Gestion extends AppCompatActivity {
     public void Pais(String continente){
 
         if(continente.equals("americaN")){
-            String[] paises = {"Canada","Estados Unidos", "Mexico"};
+            String[] paises = {"Canadá","Estados Unidos", "Mexico"};
             ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, paises);
             pais.setAdapter(adapter1);
         }
